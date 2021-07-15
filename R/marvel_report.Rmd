@@ -1,0 +1,67 @@
+---
+title: "Marvel Report"
+author: "Phong Le"
+output:
+  prettydoc::html_pretty:
+    theme: leonids
+    highlight: vignette
+knit: (function(inputFile, encoding) {
+  rmarkdown::render(inputFile, encoding = encoding, output_dir = "../reports") })
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+
+marvel_powers <- read.csv("../data/Marvel/marvel_powers.csv")
+marvel_stats <- read.csv("../data/Marvel/marvel_stats.csv")
+marvel_info <- read.csv("../data/Marvel/marvel_info.csv")
+
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. The following code can be edited via the git procedure taught in this tutorial. 
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+#### Top 10 Strongest Heroes
+
+```{r}
+
+marvel_stats %>%
+  filter(Alignment == "good") %>%
+  arrange(desc(Total)) %>%
+  select(Name) %>%
+  head(10)
+
+```
+
+#### Top 10 Weakest Villains
+
+```{r}
+
+marvel_stats %>%
+  filter(Alignment == "bad") %>%
+  arrange(Total) %>%
+  select(Name) %>%
+  head(10)
+
+```
+
+
+#### Marvel Character Races
+
+```{r}
+
+marvel_info %>%
+  group_by(Race) %>%
+  summarise(Total = n()) %>%
+  filter(Total > 7, Race != "-") %>%
+  ggplot(aes(x = reorder(Race, -Total), y = Total)) +
+  geom_bar(stat="identity", fill="#f36170") + 
+  xlab("Race") +
+  theme_classic()
+
+```
