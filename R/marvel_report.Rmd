@@ -24,7 +24,7 @@ marvel_info <- read.csv("../data/Marvel/marvel_info.csv")
 
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. The following code can be edited via the git procedure taught in this tutorial. 
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like the examples below. This document will serve as a sandbox to illustrate the processes of Git. 
 
 #### Top 10 Strongest Heroes
 
