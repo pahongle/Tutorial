@@ -1,5 +1,5 @@
 ---
-title: "Marvel Report"
+title: "Comics Report"
 author: "Phong Le"
 output:
   prettydoc::html_pretty:
@@ -51,7 +51,7 @@ marvel_stats %>%
 ```
 
 
-#### Marvel Character Races
+#### Comics Character Races
 
 ```{r}
 
@@ -66,4 +66,4 @@ marvel_info %>%
 
 ```
 
-Updated 7/14/2021
+Updated 7/15/2021
