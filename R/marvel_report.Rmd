@@ -55,14 +55,74 @@ marvel_stats %>%
 
 ```{r}
 
+library(dplyr)
+library(ggplot2)
+library(scales)
+
 marvel_info %>%
   group_by(Race) %>%
-  summarise(Total = n()) %>%
+  summarise(Total = n(), .groups = "drop") %>%
   filter(Total > 7, Race != "-") %>%
-  ggplot(aes(x = reorder(Race, -Total), y = Total)) +
-  geom_bar(stat="identity", fill="#f36170") + 
-  xlab("Race") +
-  theme_classic()
+  ggplot(aes(
+    x = reorder(Race, Total),
+    y = Total,
+    fill = Total
+  )) +
+  geom_col(
+    width = 0.75,
+    color = "black",
+    linewidth = 0.3
+  ) +
+  coord_flip() +
+  scale_fill_gradient(
+    low = "#fde0dd",
+    high = "#c51b8a",
+    name = "Count"
+  ) +
+  scale_y_continuous(
+    expand = expansion(mult = c(0, 0.05)),
+    labels = comma
+  ) +
+  labs(
+    title = "Marvel Characters by Race",
+    subtitle = "Races with More Than 7 Characters",
+    x = "Race",
+    y = "Number of Characters",
+    caption = "Source: Marvel character dataset"
+  ) +
+  theme_minimal(base_size = 15) +
+  theme(
+    plot.title = element_text(
+      size = 20,
+      face = "bold",
+      hjust = 0
+    ),
+    plot.subtitle = element_text(
+      size = 14,
+      color = "gray30",
+      margin = margin(b = 10)
+    ),
+    axis.title.x = element_text(
+      size = 14,
+      face = "bold",
+      margin = margin(t = 10)
+    ),
+    axis.title.y = element_text(
+      size = 14,
+      face = "bold",
+      margin = margin(r = 10)
+    ),
+    axis.text = element_text(size = 12),
+    legend.position = "right",
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor = element_blank(),
+    plot.caption = element_text(
+      size = 10,
+      color = "gray40",
+      hjust = 0
+    )
+  )
+
 
 ```
 
