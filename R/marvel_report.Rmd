@@ -1,5 +1,5 @@
 ---
-title: "Comics Report"
+title: "Comics Report for Training"
 author: "Phong Le"
 output:
   prettydoc::html_pretty:
