@@ -31,8 +31,8 @@ When you click the **Knit** button a document will be generated that includes bo
 ```{r}
 
 marvel_stats %>%
-  filter(Alignment == "bad") %>%
-  arrange(desc(Total)) %>%
+  filter(Alignment == "good") %>%
+  arrange(Total) %>%
   select(Name) %>%
   head(10)
 
@@ -66,6 +66,4 @@ marvel_info %>%
 
 ```
 
-Updated 7/15/2021
-
-Little comment
+Updated 12/17/2025
