@@ -66,6 +66,4 @@ marvel_info %>%
 
 ```
 
-Updated 7/15/2021
-
-Little comment
+Updated 12/17/2025
